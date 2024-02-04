@@ -30,17 +30,17 @@
     -webkit-tap-highlight-color: transparent;
     font-family: 'Pretendard', Helvetica, Arial, sans-serif;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-html,
-body {
-    padding: 0;
-    margin: 0;
+:root {
+    --black: #333333;
+    --white: #ffffff;
+    --underline: #dfdfdf;
 }
 
 div {
-    margin: 0;
-    padding: 0;
     border: 0;
     outline: 0;
     font-size: 100%;
