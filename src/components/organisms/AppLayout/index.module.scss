@@ -1,0 +1,40 @@
+@import '../../../styles/variables.module.scss';
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.content {
+    border: 1px solid var(--black);
+}
+
+@include desktop {
+    .wrapper {
+        padding: 12px 133px;
+    }
+    .content {
+        flex: 1;
+        max-width: 1000px;
+        min-width: 758px;
+    }
+}
+
+@include tablet {
+    .wrapper {
+        padding: 12px;
+    }
+    .content {
+        width: 758px;
+    }
+}
+
+@include mobile {
+    .wrapper {
+        padding: 12px;
+    }
+    .content {
+        flex: 1;
+    }
+}
