@@ -8,13 +8,15 @@
     justify-content: center;
     background-color: var(--white);
     border-bottom: 1px solid var(--underline);
+    position: fixed;
+    z-index: 1;
 }
 
 .navWrapper > ul {
     display: flex;
 }
 
-.navWrapper > ul > li {
+.navWrapper li {
     list-style: none;
     margin-right: 32px;
 }

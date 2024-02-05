@@ -7,9 +7,13 @@
     justify-content: center;
 }
 
+.content {
+    margin-top: 64px;
+}
+
 @include desktop {
     .wrapper {
-        padding: 48px 133px;
+        padding: 64px 133px;
     }
     .content {
         flex: 1;
@@ -20,7 +24,7 @@
 
 @include tablet {
     .wrapper {
-        padding: 48px 12px;
+        padding: 64px 12px;
     }
     .content {
         width: calc($breakpoint-tablet) - 24px;
@@ -29,7 +33,7 @@
 
 @include mobile {
     .wrapper {
-        padding: 48px 12px;
+        padding: 64px 12px;
     }
     .content {
         flex: 1;

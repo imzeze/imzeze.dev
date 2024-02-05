@@ -1,3 +1,4 @@
-import ProjectListTemplate from './ProjectList';
+import ProjectListTemplate from './ProjectListTemplate';
+import BlogListTemplate from './BlogListTemplate';
 
-export { ProjectListTemplate };
+export { ProjectListTemplate, BlogListTemplate };

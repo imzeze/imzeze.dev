@@ -1,8 +1,6 @@
-@import '../../../styles/variables.module.scss';
-
 .wrapper {
     width: 100%;
-    margin-top: 40px;
+    margin-top: 48px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(336px, 1fr));
     grid-gap: 12px;

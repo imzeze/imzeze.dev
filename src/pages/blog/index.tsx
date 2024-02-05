@@ -1,3 +1,5 @@
+import { BlogListTemplate } from '@/components/templates';
+
 export default function Page() {
-    return `post list`;
+    return <BlogListTemplate />;
 }
