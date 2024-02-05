@@ -2,37 +2,34 @@
 
 .wrapper {
     width: 100%;
+    min-width: 360px;
     display: flex;
     justify-content: center;
 }
 
-.content {
-    border: 1px solid var(--black);
-}
-
 @include desktop {
     .wrapper {
-        padding: 12px 133px;
+        padding: 48px 133px;
     }
     .content {
         flex: 1;
         max-width: 1000px;
-        min-width: 758px;
+        min-width: calc($breakpoint-tablet) - 24px;
     }
 }
 
 @include tablet {
     .wrapper {
-        padding: 12px;
+        padding: 48px 12px;
     }
     .content {
-        width: 758px;
+        width: calc($breakpoint-tablet) - 24px;
     }
 }
 
 @include mobile {
     .wrapper {
-        padding: 12px;
+        padding: 48px 12px;
     }
     .content {
         flex: 1;

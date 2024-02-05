@@ -1,3 +1,5 @@
+import { ProjectListTemplate } from '@/components/templates';
+
 export default function Page() {
-    return `project list`;
+    return <ProjectListTemplate />;
 }
