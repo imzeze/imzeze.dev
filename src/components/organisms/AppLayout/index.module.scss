@@ -3,6 +3,7 @@
 .wrapper {
     width: 100%;
     min-width: 360px;
+    min-height: calc(100vh - 200px);
     display: flex;
     justify-content: center;
 }

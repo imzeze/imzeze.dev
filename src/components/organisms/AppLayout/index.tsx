@@ -1,4 +1,4 @@
-import { Header } from '@/components/organisms';
+import { Header, Footer } from '@/components/organisms';
 import styles from './index.module.scss';
 import Head from 'next/head';
 
@@ -21,6 +21,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
                     <div className={styles.content}>{children}</div>
                 </div>
             </main>
+            <Footer />
         </>
     );
 }

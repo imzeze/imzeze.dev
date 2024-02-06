@@ -1,10 +1,10 @@
 @import '../../../styles/variables.module.scss';
 
 .wrapper {
-    position: relative;
     width: 100%;
     margin-top: 48px;
     display: flex;
+    justify-content: space-between;
     gap: 40px;
 }
 
@@ -16,12 +16,15 @@
 }
 
 .asideWrapper {
+    position: sticky;
+    top: 216px;
+    width: 152px;
+    height: 100%;
     border-left: 1px solid var(--underline);
-    height: fit-content;
 }
 
 .asideWrapper ul {
-    width: 152px;
+    width: 100%;
 }
 
 @include mobile {
