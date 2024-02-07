@@ -1,25 +1,16 @@
 import { AsideInfo, BlogItem } from '@/components/organisms';
 import styles from './index.module.scss';
+import { BlogPageProps } from '@/pages/blog';
 
-export default function BlogListTemplate() {
+export default function BlogListTemplate({ posts }: BlogPageProps) {
     return (
         <div>
             <h1>블로그</h1>
             <div className={styles.wrapper}>
                 <div className={styles.itemWrapper}>
-                    <BlogItem title="블로그 타이틀" />
-                    <BlogItem title="블로그 타이틀" />
-                    <BlogItem title="블로그 타이틀" />
-                    <BlogItem title="블로그 타이틀" />
-                    <BlogItem title="블로그 타이틀" />
-                    <BlogItem title="블로그 타이틀" />
-                    <BlogItem title="블로그 타이틀" />
-                    <BlogItem title="블로그 타이틀" />
-                    <BlogItem title="블로그 타이틀" />
-                    <BlogItem title="블로그 타이틀" />
-                    <BlogItem title="블로그 타이틀" />
-                    <BlogItem title="블로그 타이틀" />
-                    <BlogItem title="블로그 타이틀" />
+                    {posts.map((post) => (
+                        <BlogItem key={post.fileName} post={post} />
+                    ))}
                 </div>
                 <div className={styles.asideWrapper}>
                     <AsideInfo />
