@@ -1,13 +1,11 @@
+import { BlogDetailTemplate } from '@/components/templates';
 import { getAllPostsMeta, getPostDetail } from '@/utils/post';
 import { GetServerSideProps, GetStaticPaths } from 'next';
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 
-interface BlogDetailPageProps {
-    source: MDXRemoteSerializeResult<
-        Record<string, unknown>,
-        Record<string, unknown>
-    >;
+export interface BlogDetailPageProps {
+    source: MDXRemoteSerializeResult;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -33,5 +31,5 @@ export const getStaticProps: GetServerSideProps<BlogDetailPageProps> = async (
 };
 
 export default function Page({ source }: BlogDetailPageProps) {
-    return <MDXRemote {...source} />;
+    return <BlogDetailTemplate source={source} />;
 }
