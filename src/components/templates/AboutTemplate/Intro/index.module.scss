@@ -22,17 +22,12 @@
 
 .leftBox {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    @include animation(slideOutFromCenter, 0s, 1s, forwards, 1);
 }
 
 .selfieWrapper {
     position: relative;
     width: 100%;
     height: 100%;
-    padding: 12px;
     border-radius: 50%;
 
     > div {
@@ -48,11 +43,11 @@
 }
 
 .intro {
-    @include animation(fadeIn, 1s, 1s, forwards, 1);
     flex: 1;
-    opacity: 0;
     margin-left: 20px;
     word-break: keep-all;
+    opacity: 0;
+    @include animation(fadeIn, 1s, 1s, forwards, 1);
 
     p {
         font-weight: 500;
@@ -86,4 +81,41 @@
 
 .background3 {
     animation-duration: 1s;
+}
+
+@include mobile {
+    .wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .leftBox {
+        top: 20px;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+    .selfieWrapper {
+        opacity: 0;
+        @include animation(fadeIn, 0.2s, 1s, forwards, 1);
+    }
+    .intro {
+        margin: 20px 0 0;
+    }
+}
+
+@include tablet {
+    .leftBox {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        @include animation(slideOutFromCenter, 0s, 1s, forwards, 1);
+    }
+}
+
+@include desktop {
+    .leftBox {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        @include animation(slideOutFromCenter, 0s, 1s, forwards, 1);
+    }
 }

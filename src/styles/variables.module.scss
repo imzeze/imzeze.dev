@@ -40,6 +40,12 @@ $breakpoint-desktop: 1024px;
     }
 }
 
+@include keyframe(fadeOut) {
+    0% {
+        opacity: 0;
+    }
+}
+
 @include keyframe(slideOutFromCenter) {
     100% {
         left: 0;

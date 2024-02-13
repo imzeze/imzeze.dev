@@ -93,7 +93,9 @@ export default function Info() {
                 <h1>🖊️ 자격증</h1>
                 <div>
                     <div>2018</div>
-                    <strong>정보처리기사</strong>
+                    <div>
+                        <strong>정보처리기사</strong>
+                    </div>
                 </div>
             </div>
         </div>

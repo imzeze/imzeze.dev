@@ -1,3 +1,5 @@
+@import '../../../../styles/variables.module.scss';
+
 .wrapper {
     width: 100%;
 
@@ -35,17 +37,15 @@
     > div {
         display: flex;
         align-items: center;
-        gap: 20px;
 
         > div {
             display: flex;
             align-items: center;
             border-bottom: 1px solid var(--underline);
             padding: 18px 12px;
+            align-self: stretch;
 
             &:first-child {
-                width: 200px;
-                align-self: stretch;
             }
 
             &:last-child {
@@ -67,5 +67,58 @@
     > div {
         display: flex;
         justify-content: center;
+    }
+}
+
+@include mobile {
+    .career {
+        gap: 0px;
+
+        > div {
+            flex-direction: column;
+            > div {
+                &:last-child {
+                    margin: 12px 0 20px 20px;
+                    word-break: keep-all;
+                }
+            }
+        }
+    }
+    .head {
+        height: 0;
+        visibility: hidden;
+    }
+
+    .stack {
+        > div {
+            flex-direction: column;
+            div {
+                flex: 1;
+            }
+        }
+    }
+}
+
+@include desktop {
+    .stack {
+        > div {
+            gap: 20px;
+
+            > div:first-child {
+                width: 200px;
+            }
+        }
+    }
+}
+
+@include tablet {
+    .stack {
+        > div {
+            gap: 20px;
+
+            > div:first-child {
+                width: 200px;
+            }
+        }
     }
 }
