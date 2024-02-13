@@ -1,12 +1,19 @@
 import Link from 'next/link';
 import styles from './index.module.scss';
 import Image from 'next/image';
+import { useState } from 'react';
 
 export default function Header() {
+    const [openNav, setOpenNav] = useState(false);
+
+    const onClickHamburger = () => {
+        setOpenNav(!openNav);
+    };
+
     return (
         <header className={styles.wrapper}>
-            <nav className={styles.navWrapper}>
-                <ul>
+            <nav className={openNav ? styles.leftNav : styles.navWrapper}>
+                <ul onClick={() => setOpenNav(false)}>
                     <li>
                         <Link href="/blog">BLOG</Link>
                     </li>
@@ -40,7 +47,16 @@ export default function Header() {
                     </li>
                 </ul>
             </nav>
-            <div className={styles.hamburger}>햄버거</div>
+            <div
+                className={`${styles.hamburger} ${
+                    openNav ? styles.active : ''
+                }`}
+                onClick={onClickHamburger}
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </header>
     );
 }
