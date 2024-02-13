@@ -1,0 +1,89 @@
+@import '../../../../styles/variables.module.scss';
+
+.container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+
+    > div:not(:last-child) {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+.leftBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @include animation(slideOutFromCenter, 0s, 1s, forwards, 1);
+}
+
+.selfieWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 12px;
+    border-radius: 50%;
+
+    > div {
+        position: absolute;
+        width: 90%;
+        height: 90%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        overflow: hidden;
+    }
+}
+
+.intro {
+    @include animation(fadeIn, 1s, 1s, forwards, 1);
+    flex: 1;
+    opacity: 0;
+    margin-left: 20px;
+    word-break: keep-all;
+
+    p {
+        font-weight: 500;
+        font-size: 18px;
+        margin-top: 20px;
+        line-height: 1.6;
+    }
+}
+
+.background {
+    @include animation(slide, 0s, 1s, forwards, 1);
+    animation-direction: alternate;
+    background-image: linear-gradient(
+        -60deg,
+        var(--abalone) 50%,
+        var(--serenade) 50%
+    );
+    top: 0;
+    bottom: 0;
+    left: -50%;
+    right: -50%;
+    opacity: 0.5;
+    position: absolute;
+    z-index: -1;
+}
+
+.background2 {
+    animation-direction: alternate-reverse;
+    animation-duration: 1s;
+}
+
+.background3 {
+    animation-duration: 1s;
+}

@@ -19,3 +19,39 @@ $breakpoint-desktop: 1024px;
         @content;
     }
 }
+
+@mixin animation($name, $delay, $duration, $fillmode, $count) {
+    animation-name: $name;
+    animation-delay: $delay;
+    animation-duration: $duration;
+    animation-fill-mode: $fillmode;
+    animation-iteration-count: $count;
+}
+
+@mixin keyframe($animation_name) {
+    @keyframes #{$animation_name} {
+        @content;
+    }
+}
+
+@include keyframe(fadeIn) {
+    100% {
+        opacity: 1;
+    }
+}
+
+@include keyframe(slideOutFromCenter) {
+    100% {
+        left: 0;
+        transform: translate(20px, -50%);
+    }
+}
+
+@include keyframe(slide) {
+    0% {
+        transform: translateX(-25%);
+    }
+    100% {
+        transform: translateX(25%);
+    }
+}
