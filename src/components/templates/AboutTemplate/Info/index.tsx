@@ -22,7 +22,7 @@ export default function Info() {
                 <div>
                     <div>2021. 01. ~ 2021. 06.</div>
                     <div>
-                        <strong>버버웍스</strong>
+                        <strong>비버웍스(구 스파이더아이앤씨)</strong>
                         <p>백엔드 개발</p>
                     </div>
                 </div>
@@ -52,6 +52,7 @@ export default function Info() {
                     <div>
                         <span>express</span>
                         <span>GraphQL</span>
+                        <span>Sequelize</span>
                         <span>nodeJS</span>
                     </div>
                 </div>
@@ -86,6 +87,13 @@ export default function Info() {
                         </p>
                         <p>학점 3.81 / 4.5</p>
                     </div>
+                </div>
+            </div>
+            <div className={styles.career}>
+                <h1>🖊️ 자격증</h1>
+                <div>
+                    <div>2018</div>
+                    <strong>정보처리기사</strong>
                 </div>
             </div>
         </div>
