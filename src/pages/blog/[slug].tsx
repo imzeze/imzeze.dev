@@ -3,6 +3,7 @@ import { getAllPostsMeta, getPostDetail } from '@/utils/post';
 import { GetServerSideProps, GetStaticPaths } from 'next';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
+import { useRouter } from 'next/router';
 
 export interface BlogDetailPageProps {
     source: MDXRemoteSerializeResult;
@@ -31,5 +32,11 @@ export const getStaticProps: GetServerSideProps<BlogDetailPageProps> = async (
 };
 
 export default function Page({ source }: BlogDetailPageProps) {
+    const router = useRouter();
+
+    if (router.isFallback) {
+        return <div>Loading...</div>;
+    }
+
     return <BlogDetailTemplate source={source} />;
 }

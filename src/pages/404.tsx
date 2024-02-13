@@ -1,3 +1,3 @@
-export default function App() {
-    return `${404}`;
+export default function Page() {
+    return `404`;
 }
