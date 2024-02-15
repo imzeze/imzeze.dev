@@ -18,7 +18,7 @@ Next는 로컬에 있는 MDX 컨텐츠와 서버에서 동적으로 가져오는
 
 ## 로컬 MDX 파일 구성
 
-`@next/mdx` 패키지를 사용하면 Next는 `/pages`나 `/app`에 있는 MDX 파일과 리액트 컴포넌트를 HTML로 변환하여 페이지로
+`@next/mdx` 패키지를 사용하면 Next는 `/pages`나 `/app`에 있는 MDX 파일과 거기서 사용된 리액트 컴포넌트를 HTML로 변환하여 페이지로
 구성해줍니다.
 
 자세한 내용은 아래 공식 문서에 있습니다.
@@ -33,7 +33,7 @@ Next는 로컬에 있는 MDX 컨텐츠와 서버에서 동적으로 가져오는
 
 동적으로 MDX 파일을 가져오기 위해선 `next-mdx-remote` 패키지를 사용합니다.
 
-현재 url과 같이 `/blog/[fileName]`페이지 요청이 들어오면 서버는 `post` 폴더에서 해당 file을 읽습니다. 읽은 파일은
+현재 url과 같이 `/blog/[fileName]`페이지를 빌드하기 위해 서버는 `post` 폴더에서 해당 file을 읽습니다. 읽은 파일은
 `next-mdx-remote/serialize`의 `serialize()`로 컴파일 한 뒤, `<MDXRemote />`의 props로 넘겨 렌더되도록 합니다.
 
 <img
