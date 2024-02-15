@@ -1,7 +1,14 @@
 .wrapper {
     max-width: 800px;
+
+    p {
+        font-size: 18px;
+    }
+    span {
+        margin-right: 12px;
+    }
 }
 
 .description {
-    margin-top: 12px;
+    margin: 12px 0;
 }

@@ -1,4 +1,4 @@
-@import '../../../styles/variables.module.scss';
+@import '@/styles/variables.module.scss';
 
 .wrapper {
     width: 100%;
@@ -18,13 +18,23 @@
 .asideWrapper {
     position: sticky;
     top: 216px;
-    width: 152px;
+    width: 200px;
     height: 100%;
     border-left: 1px solid var(--underline);
 }
 
 .asideWrapper ul {
     width: 100%;
+}
+
+.asideWrapper li {
+    list-style: none;
+    margin: 0 0 12px 20px;
+    padding: 4px 12px;
+    background-color: var(--serenade);
+    border-radius: 16px;
+    width: fit-content;
+    cursor: pointer;
 }
 
 @include mobile {

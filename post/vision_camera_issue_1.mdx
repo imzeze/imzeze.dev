@@ -1,13 +1,83 @@
 ---
-title: react-native-vision-camera 화질과 비율 개선
+title: react-native-vision-camera 화질과 기능 개선
 description: 바캉스팟 개발기
-tag: 이슈, react-native
+tag: [ISSUE, RN]
 ---
 
-# react-native-vision-camera 화질 개선기
+**이슈** / **react-native**
+
+<br />
+
+# react-native-vision-camera 사용기
+
+2023년 9월에 참여한 소주톤에서 **바캉스팟**이라는 애플리케이션을 개발했습니다.
+
+바캉스팟은 여행지에서 사진을 찍을 때 참고할 수 있는 포즈 가이드라인을 제공해주는 서비스인데요,
+
+카메라를 구현하기 위해 `react-native-vision-camera`를 사용하였습니다.
+
+> [바캉스팟 APP Store](https://apps.apple.com/kr/app/vacanspot-%EB%B0%94%EC%BA%89%EC%8A%A4%ED%8C%9F/id6476105537)
+
+<br />
+
+## react-native-vision-camera 선택 이유
+
+<img
+    width="100%"
+    alt="image"
+    src="https://github.com/imzeze/TIL/assets/67260437/65845986-c380-46d5-a8ac-9fd67d073fb3"
+/>
+
+카메라 구현에 앞서 `react-native-camera`와 `react-native-vision-camera`, `react-native-camera-kit` 사용을
+고려하였습니다. `react-native-camera`가 높은 다운로드 수를 가지고 있었지만 last publish가 2년전이고,
+maintainers가 없는 것으로 확인되어 두번째로 다운로드 수가 높은 `react-native-vision-camera`를 사용하게 되었습니다.
+
+<br />
+
+## 카메라 확대/축소 기능
+
+react-native-vision-camera의 `useCameraDevice()` hook을 사용하면 핸드폰의 카메라 렌즈에 접근할 수 있습니다.
+아이폰 기본 카메라의 확대/축소 기능을 보면, 0.5x 축소도 가능한 것을 볼 수 있는데 이를 구현하기 위해서는
+`ultra-wide-angle-camera` 렌즈에 접근해야합니다.
+
+hook 호출로만으로는 이 렌즈에 접근되지 않아 `physicalDevices` 옵션을 주어 접근하였습니다.
+
+```
+const device = useCameraDevice('back', {
+  physicalDevices: [
+    'ultra-wide-angle-camera',
+    'wide-angle-camera',
+    'telephoto-camera'
+  ]
+})
+```
+
+위와 같이 multi로 접근할 수 있고, 만약 이 구성에 맞지 않는다면 react-native-vision-camera는 다음 최적의 매치
+디바이스를 찾는다고 합니다!
+
+<br />
+
+## 카메라 화질 이슈
+
+react-native-vision-camera의 `useCameraFormat()`을 사용해 카메라의 사진 해상도, 비디오 해상도, FPS 등을
+설정할 수 있습니다. 제가 개발한 바캉스팟에는 동영상 촬영 기능이 없기 때문에 사진 해상도 관련 옵션만 고려를 했는데,  
+카메라 화면의 화질이 현저히 떨어지는 이슈가 있었습니다.
+
+해서 react-native-vision-camera의 이슈들을 찾아보았는데 아래와 같은 글을 발견할 수 있었습니다.
+
+<img
+    width="100%"
+    alt="image"
+    src="https://github.com/imzeze/TIL/assets/67260437/82315f82-a2ee-4822-81dd-2ae6d9ad1e6a"
+/>
+
+> [Does video quality affects photo preview?](https://github.com/mrousavy/react-native-vision-camera/issues/2357)
+
+비디오의 해상도가 미리보기에 영향을 끼친다는 글이었죠.
+
+결국 사진 해상도와 비디오 해상도의 옵션값을 `max`로 주어 카메라 화질을 개선할 수 있었습니다.
 
 <br />
 <br />
-<br />
 
-> [> 바캉스팟](https://apps.apple.com/kr/app/vacanspot-%EB%B0%94%EC%BA%89%EC%8A%A4%ED%8C%9F/id6476105537)
+이상 바캉스팟 카메라 기능을 만들면서 겪었던 간단 기록이었습니다!
