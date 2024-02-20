@@ -8,6 +8,8 @@ export interface BlogPageProps {
 
 export const getStaticProps = async () => {
     const posts = await getAllPostsMeta();
+    const a = await fetch('https://api.github.com/repos/imzeze/TIL/contents');
+    console.log(await a.json());
     return { props: { posts } };
 };
 

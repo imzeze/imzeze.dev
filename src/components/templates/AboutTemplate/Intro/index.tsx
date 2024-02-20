@@ -31,7 +31,7 @@ export default function Intro() {
                         <span>
                             데이터베이스 관련 전공을 이수하였으며 실무에서
                             React와 React Native로 서비스를 개발/운영하였습니다.
-                            개인적으로는 React Native, Next를 이용해
+                            개인적으로는 React Native, Next JS를 이용해
                             토이프로젝트를 출시 및 배포한 경험이 있습니다.
                         </span>
                     </p>
