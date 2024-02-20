@@ -3,7 +3,7 @@ import { postModel } from '@/models/postModel';
 import { getAllPostsMeta } from '@/utils/post';
 
 export interface BlogPageProps {
-    posts: Array<postModel & { fileName: string }>;
+    posts: Array<{ fileName: string } & postModel>;
 }
 
 export const getStaticProps = async () => {

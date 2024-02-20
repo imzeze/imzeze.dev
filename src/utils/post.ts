@@ -1,6 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import matter from 'gray-matter';
+import { postModel } from '@/models/postModel';
 
 const postDirectory = path.join(process.cwd(), 'post');
 
@@ -14,7 +15,7 @@ export const getAllPostsMeta = async () => {
         posts.push(meta);
     }
 
-    return posts;
+    return posts.sort((a, b) => Number(a.id) - Number(b.id));
 };
 
 // 블로그 상세 조회
@@ -25,7 +26,7 @@ export const getPostDetail = async (file: string) => {
     const { content, data } = matter(fileContent);
 
     return {
-        meta: { ...data, fileName },
+        meta: { ...data, fileName } as postModel & { fileName: string },
         content,
     };
 };
