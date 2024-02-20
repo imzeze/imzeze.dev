@@ -1,0 +1,108 @@
+---
+title: hook 까보기
+description:
+tag: [REACT]
+---
+
+**{REACT}**
+
+<br />
+
+# Hook 까보기
+
+```js
+// react-jsx-dev-runtime.development.js
+
+var ReactCurrentDispatcher = { current: null };
+
+function resolveDispatcher() {
+    var dispatcher = ReactCurrentDispatcher.current;
+    return dispatcher;
+}
+
+function useState(initialState) {
+    var dispatcher = resolveDispatcher();
+    return dispatcher.useState(initialState);
+}
+```
+
+-   hook이 `dispatcher` 의 메소드임을 알 수 있다.
+-   외부에서 `ReactCurrentDispatcher.current` 에 hook 객체가 주입된다.
+
+```js
+// 훅 구현체
+export function renderWithHooks<Props, SecondArg>(
+    current: Fiber | null,
+    workInProgress: Fiber,
+    Component: (p: Props, arg: SecondArg) => any,
+    props: Props,
+    secondArg: SecondArg,
+    nextRenderLanes: Lanes,
+): any {
+    ReactCurrentDispatcher.current =
+        current === null || current.memoizedState === null
+            ? HooksDispatcherOnMount
+            : HooksDispatcherOnUpdate;
+}
+```
+
+current와 current.memolizedState 의 값으로 component의 mount/update 상태를 확인한다.
+
+<br />
+<br />
+
+# Hook 사용
+
+### useEffect 함수 선언
+
+함수에서 사용하는 props나 state를 파악하기 쉽도록 `useEffect` 내에서 함수를 선언하는 것이 좋다.
+
+    ```jsx
+    function Example({ someProp }) {
+        useEffect(() => {
+            function doSomething() {
+                console.log(someProp);
+            }
+
+            doSomething();
+        }, [someProp]);
+    }
+    ```
+
+### useState state 참조
+
+`setState`의 `prev` 값을 참조해 `state` 를 갱신하는 경우, `setState`는 `state`에 의존적이지 않는다.
+
+아래 코드에서 `count`를 dependency array에 추가할 경우 `count`가 업데이트 될 때마다 effect가 실행된다.
+따라서 `count`에 의존적이지 않도록 prev 값을 참조할 수 있다.
+
+```
+function Counter() {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        const id = setInterval(() => {
+            setCount((c) => c + 1);
+        }, 1000);
+        return () => clearInterval(id);
+    }, []);
+    return <h1>{count}</h1>;
+}
+```
+
+<br />
+<br />
+
+# Hook의 장단점
+
+### 장점
+
+-   짧은 코드량
+
+### 단점
+
+-   useEffect의 dependency가 기본형은 잘 동작하지만 참조형은 계속 바뀌는 것으로 인식한다.
+    -   `Object.is()` 로 참조형을 비교하면 false를 리턴하기 때문
+    -   useMemo로 같은 참조형이 들어가게 한다.
+-   클로저
+    -   dependency에 참조하고 있는 변수를 넣지 않으면 변수가 변경되어도 이전 값을 참조하고 있다.
