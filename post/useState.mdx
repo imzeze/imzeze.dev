@@ -1,0 +1,93 @@
+---
+title: useState 까보기
+description: useState 동작 원리와 사용
+tag: [REACT]
+id: 4
+---
+
+**{REACT}**
+
+<br />
+
+# useState 까보기
+
+### mountState
+
+```js
+function mountState<S>(
+    initialState: (() => S) | S,
+): [S, Dispatch<BasicStateAction<S>>] {
+    // 훅 객체 생성
+    const hook = mountWorkInProgressHook();
+
+    // lazy initial state
+    if (typeof initialState === 'function') {
+        initialState = initialState();
+    }
+
+    // 컴포넌트에 적용된 마지막 상태 값
+    hook.memoizedState = hook.baseState = initialState;
+
+    // 컴포넌트 상태를 변경하고자 할 때 업데이트 정보를 담고 있는 update 객체 생성
+    const queue: UpdateQueue<S, BasicStateAction<S>> = {
+        pending: null,
+        lanes: NoLanes,
+        dispatch: null,
+        lastRenderedReducer: basicStateReducer,
+        lastRenderedState: (initialState: any),
+    };
+
+    // 여러 번 호출되면 매 호출에서 생성된 update 객체는 이 queue에 쌓이게 된다.
+    hook.queue = queue;
+
+    // dispatch 함수; bind 부분 적용 함수
+    const dispatch: Dispatch<BasicStateAction<S>> = (queue.dispatch =
+        (dispatchSetState.bind(null, currentlyRenderingFiber, queue): any));
+
+    return [hook.memoizedState, dispatch];
+}
+```
+
+#### lazy initial state
+
+state의 초기값을 함수로 넣으면, 첫 렌더링에만 실행된다. 초기값의 연산이 복잡한 경우 최적화를 위해 사용하는 것이 좋다.
+
+#### queue.dispatch
+
+`queue.dispatch`에 `fetch`와 `queue` 인수가 지정된 함수가 리턴되어 `setState` 함수에 `action` 인수만 보내 `dispatchSetState` 함수를 태울 수있다.
+
+<br />
+<br />
+
+### dispatchSetState
+
+```js
+function dispatchSetState (fiber, queue, action) {
+    // 성능최적화를 위한 setState 비동기처리
+    const lane = requestUpdateLane(fiber);
+    const update = {
+        lane,
+        action,
+        hasEagerState: false,
+        eagerState: null,
+        next: (null: any),
+    };
+
+    // update 객체를 queue에 저장
+    if(isRenderPhaseUpdate) enqueueRenderPhaseUpdate(queue, update);
+    else (
+        const currentState: S = (queue.lastRenderedState: any);
+        const eagerState = lastRenderedReducer(currentState, action);
+
+        // state가 같다면 리렌더링 하지 않는다.
+        if(currentState === eagerState) return;
+    )
+}
+```
+
+#### 비동기적 동작
+
+react는 연속적인 리렌더 현상을 줄이기 위해 state 업데이트를 하나의 렌더링으로 묶어 한 번에 처리한다.
+
+값을 동기적으로 처리하기 위해 `useEffect`를 사용할 수 있고, 동기적으로 업데이트 하기 위해선 인자를 객체가 아닌 함수로 보낸다.
+함수로 보내면, 업데이트가 적용된 시점의 props를 두번째 인자로 받는다.
