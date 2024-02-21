@@ -3,4 +3,6 @@ export const TAG: { [key: string]: string } = {
     ISSUE: '이슈',
     RN: 'react-native',
     REACT: 'react',
+    BROWSER: 'browser',
+    JS: 'javascript',
 };

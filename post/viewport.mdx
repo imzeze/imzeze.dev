@@ -1,0 +1,59 @@
+---
+title: viewport
+description:
+tag: [BROWSER]
+id: 5
+---
+
+**{BROWSER}**
+
+<br />
+
+# viewport
+
+viewport는 현재 화면에 보이는 영역을 나타낸다. 스크린 사이즈, 전체 화면 모드 여부, 확대 여부 등이 viewport에 영향을 끼친다.
+
+<br />
+
+### clientWidth
+
+![clientWidth](https://developer.mozilla.org/ko/docs/Web/API/Element/clientWidth/dimensions-client.png)
+
+스크롤바를 제외한 viewport의 너비를 반환한다.
+
+<br />
+
+### innerWidth
+
+창의 layout viewport의 너비(현재 표시되고있는 창의 폭)을 나타낸다. 수직 스크롤 막대의 너비를 포함한다.
+
+> **layout viewport와 visual viewport**
+>
+> -   visual viewport ≤ layout viewport
+> -   화면을 확대하거나 스크롤 했을 때 화면에 보이는 영역을 visual viewport 영역이라고 한다.
+> -   visual viewport 영역을 넘어서 화면에 보이지 않는 영역까지 layout viewport라고 한다.
+> -   header나 footer와 같이 화면의 특정 위치에 고정된 요소들은 layout viewport에 맞춰져 있는 것이다.
+
+<br />
+
+### outerWidth
+
+브라우저 윈도우 바깥쪽의 폭을 얻어온다. 브라우저 윈도우의 사이드바와 가장자리 경계선을 포함한다.
+
+<br />
+
+### Mobile viewport
+
+화면 너비로 viewport 너비를 사용하도록 모바일 브라우저에 지시하기 위해 viewport 메타 태그를 사용할 수 있다.
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+```
+
+<br />
+
+### css pixel / viewport pixel
+
+css pixel : viewport pixel = 1 : 1
+
+width = 100px 인 button이 400px의 viewport 내부에 있을 때, 화면을 zoom 하여 viewport가 200px로 줄어도 button의 width(css pixel)은 변하지 않는다.
