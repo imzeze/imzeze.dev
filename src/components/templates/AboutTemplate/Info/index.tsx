@@ -13,13 +13,6 @@ export default function Info() {
                     </div>
                 </div>
                 <div>
-                    <div>2023. 08.</div>
-                    <div>
-                        <strong>더프라이빗</strong>
-                        <p>프론트엔드 개발</p>
-                    </div>
-                </div>
-                <div>
                     <div>2021. 01. ~ 2021. 06.</div>
                     <div>
                         <strong>비버웍스(구 스파이더아이앤씨)</strong>
