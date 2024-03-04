@@ -16,7 +16,14 @@ export default function Info() {
                     <div>2021. 01. ~ 2021. 06.</div>
                     <div>
                         <strong>비버웍스(구 스파이더아이앤씨)</strong>
-                        <p>백엔드 개발</p>
+                        <p>Node.js 백엔드 개발 (사원)</p>
+                    </div>
+                </div>
+                <div>
+                    <div>2020. 04. ~ 2020. 12.</div>
+                    <div>
+                        <strong>이노룰스</strong>
+                        <p>JAVA 백엔드 개발 (사원)</p>
                     </div>
                 </div>
             </div>
