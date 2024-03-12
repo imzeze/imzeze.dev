@@ -1,6 +1,6 @@
 import { MDXRemote } from 'next-mdx-remote';
 import { BlogDetailPageProps } from '@/pages/blog/[slug]';
-import { TAG } from '@/contants/tag';
+import { TAG } from '@/constants/tag';
 
 export default function BlogDetailTemplate({ source }: BlogDetailPageProps) {
     return (

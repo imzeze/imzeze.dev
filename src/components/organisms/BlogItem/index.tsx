@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import styles from './index.module.scss';
+import styles from './BlogItem.module.scss';
 import { postModel } from '@/models/postModel';
-import { TAG } from '@/contants/tag';
+import { TAG } from '@/constants/tag';
 
 interface BlogItemProps {
     post: postModel & {

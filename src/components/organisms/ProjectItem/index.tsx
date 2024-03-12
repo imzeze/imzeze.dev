@@ -1,4 +1,4 @@
-import styles from './index.module.scss';
+import styles from './ProjectItem.module.scss';
 
 interface ProjectItemProps {
     title: string;

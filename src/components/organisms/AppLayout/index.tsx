@@ -1,5 +1,5 @@
 import { Header, Footer } from '@/components/organisms';
-import styles from './index.module.scss';
+import styles from './AppLayout.module.scss';
 import Head from 'next/head';
 
 type AppLayoutProps = {

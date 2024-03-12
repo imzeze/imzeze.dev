@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styles from './index.module.scss';
+import styles from './Header.module.scss';
 import Image from 'next/image';
 import { useState } from 'react';
 

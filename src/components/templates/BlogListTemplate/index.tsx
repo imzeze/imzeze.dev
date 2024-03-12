@@ -1,7 +1,7 @@
 import { BlogItem } from '@/components/organisms';
-import styles from './index.module.scss';
+import styles from './BlogListTemplate.module.scss';
 import { BlogPageProps } from '@/pages/blog';
-import { TAG } from '@/contants/tag';
+import { TAG } from '@/constants/tag';
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';

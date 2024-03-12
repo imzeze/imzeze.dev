@@ -1,5 +1,5 @@
 import { ProjectListItem } from '@/components/organisms';
-import styles from './index.module.scss';
+import styles from './ProjectListTemplate.module.scss';
 
 export default function ProjectListTemplate() {
     return (

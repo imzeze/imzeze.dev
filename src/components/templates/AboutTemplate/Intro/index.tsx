@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import styles from './index.module.scss';
+import styles from './Intro.module.scss';
 
 export default function Intro() {
     return (

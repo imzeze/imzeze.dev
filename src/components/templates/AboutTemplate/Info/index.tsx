@@ -1,4 +1,4 @@
-import styles from './index.module.scss';
+import styles from './Info.module.scss';
 
 export default function Info() {
     return (
