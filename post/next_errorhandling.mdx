@@ -1,0 +1,129 @@
+---
+title: Next.js 에러 핸들링
+description: SSR 에러 핸들링과 React Error boundary
+tag: [NEXTJS]
+id: 1
+---
+
+**{NEXTJS}**
+
+<br />
+
+# SSR 에러 핸들링
+
+### Cutsom Error Page
+
+Next.js는 에러가 발생했을 때 서버가 모든 요청에 대해 에러 페이지를 렌더링하지 않고 static한 페이지를 리턴하도록 해준다.
+이 페이지를 `/pages` 아래 `404`, `500` 또는 `_error`를 생성해 커스터마이징 할 수 있다.
+
+-   `_error` 페이지는 `next/error`의 `Error` 컴포넌트를 사용해 에러 처리를 세밀화할 수 있는 페이지이다.
+    하지만 현재 `getStaticProps`와 `getServerSideProps`에서 지원되지 않는다.
+
+<br />
+
+### SSG에서의 API 호출
+
+SSG는 빌드 시점에 페이지를 만들어놓고 요청이 들어오면 페이지를 반환하는 방식이다.  
+만약 정적으로 만들 페이지에 데이터가 필요한 경우 `getStaticProps` 함수에서 데이터를 불러와 페이지 컴포넌트의 props로 넘겨주는데,
+데이터를 불러오는 곳에서 에러가 나면 빌드 시점에 에러가 발생한다.
+
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+    <img
+        width="700"
+        alt="image"
+        src="https://github.com/imzeze/Algorithm/assets/67260437/a1e3abb2-387e-4060-81b1-71d947cb4685"
+    />
+</div>
+
+<br />
+<br />
+
+### SSR에서의 API 호출
+
+SSR은 요청이 들어올 때마다 서버에서 페이지를 생성해 반환해주는 방식이다.  
+SSR에서는 페이지에 필요한 데이터를 `getServerSideProps` 함수에서 가져온다. 데이터를 불러오는 중 에러가 발생하면 500 에러 페이지가 반환된다.
+
+<div
+    style={{
+        display: 'flex',
+        justifyContent: 'center',
+        flexWrap: 'wrap',
+        gap: '12px',
+    }}
+>
+    <div
+        style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '4px',
+        }}
+    >
+        <img
+            width="500"
+            alt="image"
+            src="https://github.com/imzeze/Algorithm/assets/67260437/dcbaf1df-43a6-4053-b9e5-3d3484e03eca"
+        />
+        <img
+            width="500"
+            alt="image"
+            src="https://github.com/imzeze/Algorithm/assets/67260437/ebfc3608-4776-4da3-88fd-5f3405bf6dc5"
+        />
+    </div>
+    <div style={{ border: '1px solid black' }}>
+        <img
+            width="300"
+            alt="image"
+            src="https://github.com/imzeze/Algorithm/assets/67260437/64453b79-fcb6-4b85-8985-a00c05e61f26"
+        />
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+
+# ErrorBoundary 처리
+
+클라이언트에서 발생하는 에러는 React의 `ErrorBoundary`로 처리할 수 있다.
+
+아래 작성한 코드는 page router 기준으로, app router에서는 `error` 페이지를 생성하면 자동으로 대응된다고 한다. [참고](https://www.sitepoint.com/next-js-error-handling-app-router/)
+
+<div
+    style={{
+        display: 'flex',
+        justifyContent: 'center',
+        flexWrap: 'wrap',
+        gap: '12px',
+    }}
+>
+    <div
+        style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '4px',
+        }}
+    >
+        <img
+            width="500"
+            alt="스크린샷 2024-03-13 오후 12 02 43"
+            src="https://github.com/imzeze/Algorithm/assets/67260437/fe23f620-49fe-498f-ac53-6a0da174bcdf"
+        />
+        <img
+            width="500"
+            alt="image"
+            src="https://github.com/imzeze/Algorithm/assets/67260437/7d55a279-4be1-44ea-a2b4-af406e6801ee"
+        />
+        <img
+            width="500"
+            alt="image"
+            src="https://github.com/imzeze/Algorithm/assets/67260437/a2741d7b-ef2a-4c62-b3c4-21417c288451"
+        />
+    </div>
+    <div style={{ border: '1px solid black' }}>
+        <img
+            width="300"
+            alt="스크린샷 2024-03-13 오후 12 03 19"
+            src="https://github.com/imzeze/Algorithm/assets/67260437/9f98f604-46ae-499b-96e8-a7c2f3b517c5"
+        />
+    </div>
+</div>
