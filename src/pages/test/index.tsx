@@ -20,9 +20,11 @@ export default function Page() {
         if (window && window.navigator) {
             const btn = document.getElementById('test');
             btn?.addEventListener('click', () => {
-                window.navigator.share({
-                    files,
-                });
+                if (window.navigator.canShare({ files })) {
+                    window.navigator.share({
+                        files,
+                    });
+                }
             });
         }
     }, []);
