@@ -1,17 +1,23 @@
 import { useEffect } from 'react';
 
-export default async function Page() {
-    const response = await fetch(
-        'https://magicphoto.s3.ap-northeast-2.amazonaws.com/pictures/1000_1716768077_NGwUve/1000_1716768077_NGwUve.mp4',
-    );
-    const buffer = await response.arrayBuffer();
-    const file = new File([buffer], '1000_1716768077_NGwUve.mp4', {
-        type: 'video/mp4',
-    });
-    const files = [file];
-
+export default function Page() {
     useEffect(() => {
-        if (window && window.navigator) {
+        const files: Array<File> = [];
+        const fetchFile = async () => {
+            const response = await fetch(
+                'https://imzeze-dev.vercel.app/_next/image?url=%2Ficons%2Flinkto.png&w=48&q=75',
+            );
+            const buffer = await response.arrayBuffer();
+            const file = new File([buffer], 'test.png', {
+                type: 'image/jpg',
+            });
+
+            files.push(file);
+        };
+
+        fetchFile();
+
+        if (files.length > 0 && window && window.navigator) {
             const btn = document.getElementById('test');
             btn?.addEventListener('click', () => {
                 window.navigator.share({
