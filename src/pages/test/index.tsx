@@ -9,7 +9,7 @@ export default function Page() {
             );
             const buffer = await response.arrayBuffer();
             const file = new File([buffer], 'test.png', {
-                type: 'image/jpg',
+                type: 'image/png',
             });
 
             files.push(file);
@@ -17,7 +17,7 @@ export default function Page() {
 
         fetchFile();
 
-        if (files.length > 0 && window && window.navigator) {
+        if (window && window.navigator) {
             const btn = document.getElementById('test');
             btn?.addEventListener('click', () => {
                 window.navigator.share({
